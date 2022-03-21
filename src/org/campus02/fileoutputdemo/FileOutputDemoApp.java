@@ -1,9 +1,6 @@
 package org.campus02.fileoutputdemo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class FileOutputDemoApp {
@@ -14,12 +11,13 @@ public class FileOutputDemoApp {
 
         try {
             FileOutputStream fos = new FileOutputStream(f);
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fos);
 
             for (char c : demoText.toCharArray()){
-                fos.write(c);
+                bufferedOutputStream.write(c);
             }
-            fos.flush();
-            fos.close();
+            bufferedOutputStream.flush();
+            bufferedOutputStream.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

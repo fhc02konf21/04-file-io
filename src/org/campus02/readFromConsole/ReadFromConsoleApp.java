@@ -16,8 +16,9 @@ public class ReadFromConsoleApp {
             while ((cFromConsole = System.in.read()) != 'x') {
 
                 fileOutputStream.write(cFromConsole);
+                fileOutputStream.flush();
             }
-            fileOutputStream.flush();
+
             fileOutputStream.close();
 
 
