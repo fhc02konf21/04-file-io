@@ -1,6 +1,7 @@
 package org.campus02.filedemo;
 
 import java.io.File;
+import java.io.InputStream;
 
 public class FileDemoApp {
     public static void main(String[] args) {
@@ -15,7 +16,8 @@ public class FileDemoApp {
         System.out.println("file.getName() = " + file.getName());
         System.out.println("file.length() = " + file.length());
         System.out.println("file.exists() = " + file.exists());
-        
+
+
         if (file.isDirectory()) {
 
             File[] fileArray = file.listFiles();
