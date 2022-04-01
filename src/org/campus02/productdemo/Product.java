@@ -6,6 +6,7 @@ public class Product implements Serializable {
     private String productName;
     private Double price;
     private String productCategory;
+    private int something;
 
     public Product(String productName, Double price, String productCategory) {
         this.productName = productName;

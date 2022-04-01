@@ -22,6 +22,7 @@ public class DemoApp {
             System.out.println("loading entries ...");
             ProductManager pm = new ProductManager();
             pm.load("D:\\temp\\products.dat");
+            System.out.println("pm = " + pm);
         } catch (ProductFileExcecption e) {
             e.printStackTrace();
         }

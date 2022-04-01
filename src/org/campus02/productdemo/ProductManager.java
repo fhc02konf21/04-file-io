@@ -30,7 +30,6 @@ public class ProductManager {
             oos = new ObjectOutputStream(new FileOutputStream(path));
             oos.writeObject(products);
             oos.flush();
-            oos.close();
         } catch (FileNotFoundException e) {
             throw new ProductFileExcecption("Fehler beim Speichern von " + path, e);
         } catch (IOException e) {
@@ -47,25 +46,24 @@ public class ProductManager {
     }
 
     public void load(String path) throws ProductFileExcecption {
-        ObjectInputStream ois = null;
 
-        try {
-            ois = new ObjectInputStream(new FileInputStream(path));
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path)))
+        {
             products = (ArrayList<Product>) ois.readObject();
-            ois.close();
+
         } catch (FileNotFoundException e) {
             throw new ProductFileExcecption("Fehler beim Laden von " + path, e);
         } catch (IOException e) {
             throw new ProductFileExcecption("Fehler beim Laden von " + path, e);
         } catch (ClassNotFoundException e) {
             throw new ProductFileExcecption("Falsches Dateiformat beim Laden von " + path , e);
-        } finally {
+        } /*finally {
             try {
                 if (ois != null)
                     ois.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 }
